@@ -8,3 +8,4 @@ C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCod
 C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.csproj.CoreCompileInputs.cache
 C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.exe
 C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.pdb
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.Images.resources
