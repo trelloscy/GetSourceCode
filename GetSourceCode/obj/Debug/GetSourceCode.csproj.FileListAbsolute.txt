@@ -1,0 +1,10 @@
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\bin\Debug\GetSourceCode.exe.config
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\bin\Debug\GetSourceCode.exe
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\bin\Debug\GetSourceCode.pdb
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.csprojResolveAssemblyReference.cache
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.Form1.resources
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.Properties.Resources.resources
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.csproj.GenerateResource.Cache
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.csproj.CoreCompileInputs.cache
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.exe
+C:\Users\tkolios\Source\repos\GetSourceCode\GetSourceCode\obj\Debug\GetSourceCode.pdb
