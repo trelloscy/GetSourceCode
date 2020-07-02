@@ -21,7 +21,7 @@ namespace GetSourceCode {
         }
 
         public string InstagramURL { get; set; } = "https://www.instagram.com";
-        public string OutputCSV { get; set; } = $@"C:\Users\koliost\Desktop\follower statistics {DateTime.Now.ToString("yyyyMMddHHmmss")}.csv";
+        public string OutputCSV { get; set; } = $@"C:\Users\koliost\Desktop\followers statistics\follower statistics {DateTime.Now.ToString("yyyyMMddHHmmss")}.csv";
 
         private void btnSearch_Click(object sender, EventArgs e) {
             try {
@@ -62,6 +62,17 @@ namespace GetSourceCode {
             var match = Regex.Match(richTextBox1.Text, pattern);
             if (match.Success && match.Groups.Count > 1) {
                 //result = match.Groups[1].Value.Replace("\\u0026", "&");
+                result = Regex.Unescape(match.Groups[1].Value);
+            }
+
+            return result;
+        }
+        private string RegexCheckLargest(string pattern) {
+
+            string result = "";
+
+            var match = Regex.Matches(richTextBox1.Text, pattern).Cast<Match>().OrderByDescending(x => x.Value).FirstOrDefault();
+            if (match != null && match.Success && match.Groups.Count > 1) {
                 result = Regex.Unescape(match.Groups[1].Value);
             }
 
@@ -166,7 +177,7 @@ namespace GetSourceCode {
                         stream.WriteLine(csvRow);
 
                         // Finally, wait 300-600ms before moving to the next
-                        await Task.Delay(300 + new Random().Next(0, 300));
+                        await Task.Delay(new Random().Next(5000, 10000));
                         lblCounter.Text = $"Completed: {++counter}/{followersList.Length}";
 
                     } catch (Exception ex) {
@@ -187,20 +198,20 @@ namespace GetSourceCode {
             followers = RegexCheck("\"edge_followed_by\":{\"count\":(\\d*)}");
             following = RegexCheck("\"edge_follow\":{\"count\":(\\d*)}");
             postCount = RegexCheck("\"edge_owner_to_timeline_media\":{\"count\":(\\d*),");
-            var latestTimestamp = RegexCheck("\"taken_at_timestamp\":(\\d*)");
+            var latestTimestamp = RegexCheckLargest("\"taken_at_timestamp\":(\\d*)");
             lastPostDateFormatted = "N/A";
 
             // New
-            if (!string.IsNullOrEmpty(postCount) && postCount != "0" && !string.IsNullOrEmpty(latestTimestamp)) {
-
-                // Get timestamp of latest post
-                var timestamp = double.Parse(latestTimestamp);
+            if (!string.IsNullOrEmpty(postCount)
+                && postCount != "0"
+                && !string.IsNullOrEmpty(latestTimestamp)
+                && double.TryParse(latestTimestamp, out double timestamp)) {
 
                 // Add the timestamp (number of seconds since the Epoch) to be converted
                 lastPostDateFormatted = new DateTime(1970, 1, 1, 0, 0, 0, 0)
                                    .AddSeconds(timestamp)
                                    .ToLocalTime()
-                                   .ToString("yyyy-MM-dd-HH:mm:ss");
+                                   .ToString("yyyy-MM-ddTHH:mm:ss");
             }
         }
 
