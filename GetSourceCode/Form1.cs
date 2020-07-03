@@ -177,7 +177,7 @@ namespace GetSourceCode {
                         stream.WriteLine(csvRow);
 
                         // Finally, wait 300-600ms before moving to the next
-                        await Task.Delay(new Random().Next(5000, 10000));
+                        await Task.Delay(new Random().Next(6500, 12000));
                         lblCounter.Text = $"Completed: {++counter}/{followersList.Length}";
 
                     } catch (Exception ex) {

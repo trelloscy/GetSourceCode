@@ -43,17 +43,17 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.btnParse = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtFollowersSource = new System.Windows.Forms.TextBox();
-            this.btnParseFollowers = new System.Windows.Forms.Button();
-            this.lblCounter = new System.Windows.Forms.Label();
             this.btnOpenCSV = new System.Windows.Forms.Button();
+            this.lblCounter = new System.Windows.Forms.Label();
+            this.btnParseFollowers = new System.Windows.Forms.Button();
+            this.txtFollowersSource = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -230,6 +230,25 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instagram";
             // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(646, 159);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(151, 22);
+            this.textBox5.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(642, 138);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Last Post Date:";
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -277,25 +296,6 @@
             this.progressBar1.Size = new System.Drawing.Size(1335, 28);
             this.progressBar1.TabIndex = 4;
             // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(646, 159);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(151, 22);
-            this.textBox5.TabIndex = 14;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(642, 138);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Last Post Date:";
-            // 
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -310,14 +310,25 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "IG Followers";
             // 
-            // txtFollowersSource
+            // btnOpenCSV
             // 
-            this.txtFollowersSource.Location = new System.Drawing.Point(24, 20);
-            this.txtFollowersSource.Multiline = true;
-            this.txtFollowersSource.Name = "txtFollowersSource";
-            this.txtFollowersSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtFollowersSource.Size = new System.Drawing.Size(447, 628);
-            this.txtFollowersSource.TabIndex = 0;
+            this.btnOpenCSV.Location = new System.Drawing.Point(504, 133);
+            this.btnOpenCSV.Name = "btnOpenCSV";
+            this.btnOpenCSV.Size = new System.Drawing.Size(163, 30);
+            this.btnOpenCSV.TabIndex = 3;
+            this.btnOpenCSV.Text = "See results";
+            this.btnOpenCSV.UseVisualStyleBackColor = true;
+            this.btnOpenCSV.Visible = false;
+            this.btnOpenCSV.Click += new System.EventHandler(this.btnOpenCSV_Click);
+            // 
+            // lblCounter
+            // 
+            this.lblCounter.AutoSize = true;
+            this.lblCounter.Location = new System.Drawing.Point(501, 85);
+            this.lblCounter.Name = "lblCounter";
+            this.lblCounter.Size = new System.Drawing.Size(103, 17);
+            this.lblCounter.TabIndex = 2;
+            this.lblCounter.Text = "Completed: 0/0";
             // 
             // btnParseFollowers
             // 
@@ -329,25 +340,15 @@
             this.btnParseFollowers.UseVisualStyleBackColor = true;
             this.btnParseFollowers.Click += new System.EventHandler(this.btnParseFollowers_Click);
             // 
-            // lblCounter
+            // txtFollowersSource
             // 
-            this.lblCounter.AutoSize = true;
-            this.lblCounter.Location = new System.Drawing.Point(501, 85);
-            this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(103, 17);
-            this.lblCounter.TabIndex = 2;
-            this.lblCounter.Text = "Completed: 0/0";
-            // 
-            // btnOpenCSV
-            // 
-            this.btnOpenCSV.Location = new System.Drawing.Point(504, 133);
-            this.btnOpenCSV.Name = "btnOpenCSV";
-            this.btnOpenCSV.Size = new System.Drawing.Size(163, 30);
-            this.btnOpenCSV.TabIndex = 3;
-            this.btnOpenCSV.Text = "See results";
-            this.btnOpenCSV.UseVisualStyleBackColor = true;
-            this.btnOpenCSV.Visible = false;
-            this.btnOpenCSV.Click += new System.EventHandler(this.btnOpenCSV_Click);
+            this.txtFollowersSource.Location = new System.Drawing.Point(24, 20);
+            this.txtFollowersSource.MaxLength = 0;
+            this.txtFollowersSource.Multiline = true;
+            this.txtFollowersSource.Name = "txtFollowersSource";
+            this.txtFollowersSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtFollowersSource.Size = new System.Drawing.Size(447, 628);
+            this.txtFollowersSource.TabIndex = 0;
             // 
             // Form1
             // 
