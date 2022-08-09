@@ -1,3 +1,5 @@
 /.vs/
+/packages
+/GetSourceCode/packages/
 /GetSourceCode/bin/
 /GetSourceCode/obj/
