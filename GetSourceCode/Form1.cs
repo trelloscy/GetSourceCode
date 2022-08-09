@@ -13,21 +13,27 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GetSourceCode {
-    public partial class Form1 : Form {
-        public Form1() {
+namespace GetSourceCode
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
             InitializeComponent();
         }
 
-        public string InstagramURL { get; set; } = "https://www.instagram.com";
+        public static string InstagramURL { get; set; } = "https://www.instagram.com";
         public string OutputCSV { get; set; } = $@"C:\Users\koliost\Desktop\followers statistics\follower statistics {DateTime.Now.ToString("yyyyMMddHHmmss")}.csv";
 
-        private void btnSearch_Click(object sender, EventArgs e) {
-            try {
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 var profileUrl = $"{InstagramURL}/{txtUsername.Text}/";
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(profileUrl);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                using (StreamReader sr = new StreamReader(response.GetResponseStream())) {
+                using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                {
                     richTextBox1.Text = sr.ReadToEnd();
                 }
 
@@ -50,39 +56,48 @@ namespace GetSourceCode {
                 path.AddEllipse(0, 0, pictureBox1.Height, pictureBox1.Height);
                 pictureBox1.Region = new Region(path);
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private string RegexCheck(string pattern) {
+        private string RegexCheck(string pattern)
+        {
             string result = "";
 
             var match = Regex.Match(richTextBox1.Text, pattern);
-            if (match.Success && match.Groups.Count > 1) {
+            if (match.Success && match.Groups.Count > 1)
+            {
                 //result = match.Groups[1].Value.Replace("\\u0026", "&");
                 result = Regex.Unescape(match.Groups[1].Value);
             }
 
             return result;
         }
-        private string RegexCheckLargest(string pattern) {
+        private string RegexCheckLargest(string pattern)
+        {
 
             string result = "";
 
             var match = Regex.Matches(richTextBox1.Text, pattern).Cast<Match>().OrderByDescending(x => x.Value).FirstOrDefault();
-            if (match != null && match.Success && match.Groups.Count > 1) {
+            if (match != null && match.Success && match.Groups.Count > 1)
+            {
                 result = Regex.Unescape(match.Groups[1].Value);
             }
 
             return result;
         }
-        private Task<string> RegexCheckAll(string source, string pattern) {
+        private Task<string> RegexCheckAll(string source, string pattern)
+        {
             string result = "";
 
-            return Task.Run(() => {
+            return Task.Run(() =>
+            {
                 var matches = Regex.Matches(source, pattern);
-                foreach (Match match in matches) {
+                foreach (Match match in matches)
+                {
                     var text = match.Groups[1].Value;
                     text = "{" + text.Replace("&#92;\"", "'") + "}";
                     JToken parsedJson = JToken.Parse(text);
@@ -94,14 +109,18 @@ namespace GetSourceCode {
             });
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Escape) {
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
                 Close();
             }
         }
 
-        private async void btnParse_Click(object sender, EventArgs e) {
-            try {
+        private async void btnParse_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 richTextBox2.Text = Clipboard.GetText();
 
                 //String url = "https://www.linkedin.com/me/profile-views/urn:li:wvmp:summary/";
@@ -122,7 +141,8 @@ namespace GetSourceCode {
                 //path.AddEllipse(0, 0, pictureBox1.Height, pictureBox1.Height);
                 //pictureBox1.Region = new Region(path);
 
-                if (string.IsNullOrEmpty(richTextBox2.Text)) {
+                if (string.IsNullOrEmpty(richTextBox2.Text))
+                {
                     MessageBox.Show("No source code specified");
                     return;
                 }
@@ -135,14 +155,18 @@ namespace GetSourceCode {
                 richTextBox2.Text = result;
                 //richTextBox2.ScrollToCaret();
                 progressBar1.Style = ProgressBarStyle.Blocks;
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        private async void btnParseFollowers_Click(object sender, EventArgs e) {
+        private async void btnParseFollowers_Click(object sender, EventArgs e)
+        {
 
-            if (string.IsNullOrEmpty(txtFollowersSource.Text)) {
+            if (string.IsNullOrEmpty(txtFollowersSource.Text))
+            {
                 MessageBox.Show("No follower usernames specified");
                 return;
             }
@@ -153,20 +177,24 @@ namespace GetSourceCode {
             lblCounter.Text = $"Completed: 0/{followersList.Length}";
             btnParseFollowers.Enabled = false;
 
-            using (var stream = File.CreateText(OutputCSV)) {
+            using (var stream = File.CreateText(OutputCSV))
+            {
 
                 // Write headers
                 var headers = "Username,Followers,Following,Post Count,Last Post Date,Profile URL";
                 stream.WriteLine(headers);
 
                 // Parse each follower, get post count and latest date, then delay for x seconds
-                foreach (var username in followersList) {
+                foreach (var username in followersList)
+                {
 
-                    try {
+                    try
+                    {
                         var profileUrl = $"{InstagramURL}/{username}/";
                         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(profileUrl);
                         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                        using (StreamReader sr = new StreamReader(response.GetResponseStream())) {
+                        using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                        {
                             richTextBox1.Text = sr.ReadToEnd();
                         }
 
@@ -179,7 +207,9 @@ namespace GetSourceCode {
                         await Task.Delay(new Random().Next(6500, 12000));
                         lblCounter.Text = $"Completed: {++counter}/{followersList.Length}";
 
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         MessageBox.Show(ex.Message);
                     }
 
@@ -188,12 +218,14 @@ namespace GetSourceCode {
 
             btnParseFollowers.Enabled = true;
 
-            if (followersList.Length > 0) {
+            if (followersList.Length > 0)
+            {
                 btnOpenCSV.Visible = true;
             }
         }
 
-        private void ParseDetails(out string followers, out string following, out string postCount, out string lastPostDateFormatted) {
+        private void ParseDetails(out string followers, out string following, out string postCount, out string lastPostDateFormatted)
+        {
             followers = RegexCheck("\"edge_followed_by\":{\"count\":(\\d*)}");
             following = RegexCheck("\"edge_follow\":{\"count\":(\\d*)}");
             postCount = RegexCheck("\"edge_owner_to_timeline_media\":{\"count\":(\\d*),");
@@ -204,7 +236,8 @@ namespace GetSourceCode {
             if (!string.IsNullOrEmpty(postCount)
                 && postCount != "0"
                 && !string.IsNullOrEmpty(latestTimestamp)
-                && double.TryParse(latestTimestamp, out double timestamp)) {
+                && double.TryParse(latestTimestamp, out double timestamp))
+            {
 
                 // Add the timestamp (number of seconds since the Epoch) to be converted
                 lastPostDateFormatted = new DateTime(1970, 1, 1, 0, 0, 0, 0)
@@ -214,7 +247,8 @@ namespace GetSourceCode {
             }
         }
 
-        private void btnOpenCSV_Click(object sender, EventArgs e) {
+        private void btnOpenCSV_Click(object sender, EventArgs e)
+        {
             Process.Start(OutputCSV);
         }
     }
