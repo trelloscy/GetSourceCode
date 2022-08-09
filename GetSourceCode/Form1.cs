@@ -245,5 +245,33 @@ namespace GetSourceCode
         {
             Process.Start(OutputCsv);
         }
+
+        /********************************** Reels *******************************************/
+
+        private void btnSearchReel_Click(object sender, EventArgs e)
+        {
+            // Neither method works, apparently you need cookie in the header (because you cannot view reels without being logged in)
+            // https://stackoverflow.com/questions/53233966/500-error-when-webclient-downloadstring
+
+            using (WebClient web1 = new WebClient())
+            {
+                richTextBox3.Text = web1.DownloadString(txtReelUrl.Text);
+            }
+
+            //HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(txtReelUrl.Text);
+            //myRequest.Method = "GET";
+            //WebResponse myResponse = myRequest.GetResponse();
+            //StreamReader sr = new StreamReader(myResponse.GetResponseStream(), System.Text.Encoding.UTF8);
+            //richTextBox3.Text = sr.ReadToEnd();
+            //sr.Close();
+            //myResponse.Close();
+
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create(txtReelUrl.Text);
+            //HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            //using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+            //{
+            //    richTextBox3.Text = sr.ReadToEnd();
+            //}
+        }
     }
 }

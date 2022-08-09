@@ -54,12 +54,20 @@
             this.lblCounter = new System.Windows.Forms.Label();
             this.btnParseFollowers = new System.Windows.Forms.Button();
             this.txtFollowersSource = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.txtReelUrl = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnSearchReel = new System.Windows.Forms.Button();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -180,6 +188,7 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -210,7 +219,7 @@
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1005, 569);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Instagram";
@@ -240,7 +249,7 @@
             this.tabPage2.Controls.Add(this.progressBar1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1005, 569);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "LinkedIn";
@@ -283,9 +292,9 @@
             this.tabPage3.Controls.Add(this.btnParseFollowers);
             this.tabPage3.Controls.Add(this.txtFollowersSource);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(1005, 569);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "IG Followers";
@@ -293,7 +302,7 @@
             // btnOpenCSV
             // 
             this.btnOpenCSV.Location = new System.Drawing.Point(378, 108);
-            this.btnOpenCSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOpenCSV.Margin = new System.Windows.Forms.Padding(2);
             this.btnOpenCSV.Name = "btnOpenCSV";
             this.btnOpenCSV.Size = new System.Drawing.Size(122, 24);
             this.btnOpenCSV.TabIndex = 3;
@@ -315,7 +324,7 @@
             // btnParseFollowers
             // 
             this.btnParseFollowers.Location = new System.Drawing.Point(378, 16);
-            this.btnParseFollowers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnParseFollowers.Margin = new System.Windows.Forms.Padding(2);
             this.btnParseFollowers.Name = "btnParseFollowers";
             this.btnParseFollowers.Size = new System.Drawing.Size(122, 42);
             this.btnParseFollowers.TabIndex = 1;
@@ -326,13 +335,75 @@
             // txtFollowersSource
             // 
             this.txtFollowersSource.Location = new System.Drawing.Point(18, 16);
-            this.txtFollowersSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFollowersSource.Margin = new System.Windows.Forms.Padding(2);
             this.txtFollowersSource.MaxLength = 0;
             this.txtFollowersSource.Multiline = true;
             this.txtFollowersSource.Name = "txtFollowersSource";
             this.txtFollowersSource.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtFollowersSource.Size = new System.Drawing.Size(336, 511);
             this.txtFollowersSource.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.pictureBox3);
+            this.tabPage4.Controls.Add(this.richTextBox3);
+            this.tabPage4.Controls.Add(this.btnSearchReel);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.txtReelUrl);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1005, 569);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reels";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // txtReelUrl
+            // 
+            this.txtReelUrl.Location = new System.Drawing.Point(8, 83);
+            this.txtReelUrl.Name = "txtReelUrl";
+            this.txtReelUrl.Size = new System.Drawing.Size(390, 20);
+            this.txtReelUrl.TabIndex = 0;
+            this.txtReelUrl.Text = "https://www.instagram.com/p/Cgeim3cFEu0/";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Reel URL";
+            // 
+            // btnSearchReel
+            // 
+            this.btnSearchReel.Location = new System.Drawing.Point(404, 81);
+            this.btnSearchReel.Name = "btnSearchReel";
+            this.btnSearchReel.Size = new System.Drawing.Size(75, 23);
+            this.btnSearchReel.TabIndex = 2;
+            this.btnSearchReel.Text = "Search";
+            this.btnSearchReel.UseVisualStyleBackColor = true;
+            this.btnSearchReel.Click += new System.EventHandler(this.btnSearchReel_Click);
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox3.Location = new System.Drawing.Point(3, 164);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(999, 402);
+            this.richTextBox3.TabIndex = 3;
+            this.richTextBox3.Text = "";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::GetSourceCode.Images.instagram_logo;
+            this.pictureBox3.Location = new System.Drawing.Point(8, 13);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(181, 42);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 13;
+            this.pictureBox3.TabStop = false;
             // 
             // Form1
             // 
@@ -354,6 +425,9 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -386,6 +460,12 @@
         private System.Windows.Forms.TextBox txtFollowersSource;
         private System.Windows.Forms.Label lblCounter;
         private System.Windows.Forms.Button btnOpenCSV;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btnSearchReel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtReelUrl;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }
 
