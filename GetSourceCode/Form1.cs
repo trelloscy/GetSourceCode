@@ -215,7 +215,7 @@ namespace GetSourceCode {
         }
 
         private void btnOpenCSV_Click(object sender, EventArgs e) {
-            System.Diagnostics.Process.Start(OutputCSV);
+            Process.Start(OutputCSV);
         }
     }
 }
