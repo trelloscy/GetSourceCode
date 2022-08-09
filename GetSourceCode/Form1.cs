@@ -1,14 +1,12 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,14 +20,14 @@ namespace GetSourceCode
             InitializeComponent();
         }
 
-        public static string InstagramURL { get; set; } = "https://www.instagram.com";
-        public string OutputCSV { get; set; } = $@"C:\Users\koliost\Desktop\followers statistics\follower statistics {DateTime.Now.ToString("yyyyMMddHHmmss")}.csv";
+        public static string InstagramUrl { get; set; } = "https://www.instagram.com";
+        public static string OutputCsv { get; set; } = $"Follower statistics {DateTime.Now:yyyyMMddHHmmss}.csv";
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                var profileUrl = $"{InstagramURL}/{txtUsername.Text}/";
+                var profileUrl = $"{InstagramUrl}/{txtUsername.Text}/";
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(profileUrl);
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 using (StreamReader sr = new StreamReader(response.GetResponseStream()))
@@ -78,7 +76,6 @@ namespace GetSourceCode
         }
         private string RegexCheckLargest(string pattern)
         {
-
             string result = "";
 
             var match = Regex.Matches(richTextBox1.Text, pattern).Cast<Match>().OrderByDescending(x => x.Value).FirstOrDefault();
@@ -177,9 +174,8 @@ namespace GetSourceCode
             lblCounter.Text = $"Completed: 0/{followersList.Length}";
             btnParseFollowers.Enabled = false;
 
-            using (var stream = File.CreateText(OutputCSV))
+            using (var stream = File.CreateText(OutputCsv))
             {
-
                 // Write headers
                 var headers = "Username,Followers,Following,Post Count,Last Post Date,Profile URL";
                 stream.WriteLine(headers);
@@ -187,10 +183,9 @@ namespace GetSourceCode
                 // Parse each follower, get post count and latest date, then delay for x seconds
                 foreach (var username in followersList)
                 {
-
                     try
                     {
-                        var profileUrl = $"{InstagramURL}/{username}/";
+                        var profileUrl = $"{InstagramUrl}/{username}/";
                         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(profileUrl);
                         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                         using (StreamReader sr = new StreamReader(response.GetResponseStream()))
@@ -203,7 +198,7 @@ namespace GetSourceCode
                         string csvRow = $"{username},{followers},{following},{postCount},{lastPostDateFormatted},{profileUrl}";
                         stream.WriteLine(csvRow);
 
-                        // Finally, wait 300-600ms before moving to the next
+                        // Finally, wait a random amount of seconds before processing the next record
                         await Task.Delay(new Random().Next(6500, 12000));
                         lblCounter.Text = $"Completed: {++counter}/{followersList.Length}";
 
@@ -212,9 +207,8 @@ namespace GetSourceCode
                     {
                         MessageBox.Show(ex.Message);
                     }
-
-                } // End of foreach
-            } // End of using streamwriter
+                }
+            }
 
             btnParseFollowers.Enabled = true;
 
@@ -249,7 +243,7 @@ namespace GetSourceCode
 
         private void btnOpenCSV_Click(object sender, EventArgs e)
         {
-            Process.Start(OutputCSV);
+            Process.Start(OutputCsv);
         }
     }
 }
